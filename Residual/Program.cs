@@ -10,34 +10,26 @@ namespace Residual
     {
         static void Main(string[] args)
         {
-            int minResidual = 3;
-            int maxResidual = 5;
-            int step = 2;
+            int firstDivizior = 3;
+            int secondDivizior = 5;
+            int maxNumber = 100;
 
             Random rand = new Random();
-            int maxRandomLevel = 100;
+            int randomNumber = rand.Next(maxNumber + 1);
+
             string line = "";
             int sum = 0;
 
-            int randomNumber = rand.Next(maxRandomLevel + 1);
-
-            for (int i = minResidual; i < maxResidual + 1; i += step)
+            for (int i = firstDivizior; i <= randomNumber; i++)
             {
-                for (int ii = 0; ii <= randomNumber; ii++)
+                if (i % firstDivizior == 0 || i % secondDivizior == 0)
                 {
-                    if (ii % i == 0)
-                    {
-                        line += ii.ToString() + "+";
-                        sum += ii;
-                    }
+                    line += i.ToString() + "+";
+                    sum += i;
                 }
-
-                Console.WriteLine($"рандомное число: {randomNumber}");
-                Console.WriteLine($"числа кратные {i}: {line}\nсумма чисел: {sum}");
-
-                line = "";
-                sum = 0;
             }
+            Console.WriteLine($"рандомное число: {randomNumber}");
+            Console.WriteLine($"числа кратные {firstDivizior} или {secondDivizior}: {line}\nсумма чисел: {sum}");
         }
     }
 }
